@@ -13,11 +13,46 @@ html {
 body {
     font-size: 1.6rem;
     line-height: 1.2;
+    font-family: 'Mazius Review';
+    color: #2d2d2d;
+    position: relative;
 }
+
+h1, h2, h3, .h1, .h2, .h3 {
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 7.2rem;
+}
+
+h2 {
+    font-size: 4.8rem;
+}
+
+h3 {
+    font-size: 3.2rem;
+}
+
+p {
+    font-size: 1.8rem;
+}
+
 
 img {
     max-width: 100%;
     width: 100%;
     height: auto;
     display: block;
+}
+
+.container {
+    width: 100%;
+    max-width: 970px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+main {
+    padding-top: 100vh;
 }
