@@ -54,5 +54,20 @@ img {
 }
 
 main {
-    padding-top: 100vh;
+    // padding-top: 100vh;
+    position: relative;
+    top: 100vh;
+}
+
+
+
+// Animation
+@keyframes upDown {
+    0% {
+        transform: translateY(0)
+    }
+
+    100% {
+        transform: translateY(10%)
+    }
 }
