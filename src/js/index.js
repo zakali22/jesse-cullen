@@ -9,23 +9,30 @@ import { ScrollScene, addIndicators  } from 'scrollscene'
 
 const heroSection = document.querySelector('.hero')
 const heroSectionEls = heroSection.querySelectorAll('.hero__title, .hero__subtitle, .hero__arrow')
+const heroTitleSlide = document.querySelectorAll('.hero__title-slide-wrapper')
 const heroArrow = heroSection.querySelector('.hero__arrow')
 const mainSection = document.querySelector('main')
 const blobs = document.querySelector('.blobs')
 const gallery = document.querySelectorAll('.gallery')
 
 // Timelines 
+for(let i = 0; i < heroTitleSlide.length; i++){
+    const slideTween = new TimelineMax()
+    slideTween
+        .set(heroTitleSlide[i].children[0], {y: 250})
+        .to(heroTitleSlide[i].children[0], {y: 0, duration: 1*(i+1), ease: 'linear.easeNone', delay: 1})
+}
+
 const loadFadeInTl = new TimelineMax({
     onComplete: function(){
         heroArrow.style.animation = "upDown .7s ease-in-out infinite alternate"
     }
 })
 loadFadeInTl
-    .set(heroSectionEls, {opacity: 0})
+    .set(heroArrow, {opacity: 0})
     .set(blobs, {opacity: 0})
-    .to(heroSectionEls, {opacity: 1, duration: 2.5, stagger: 0.4, delay: .8})
-    .to(blobs, {opacity: .7, duration: 1.3}, "-=2.45")
-
+    .to(heroArrow, {opacity: 1, duration: 1.3, delay: 2.5})
+    .to(blobs, {opacity: .7, duration: 1.3}, "-=1")
 
 // Tweens
 const fadeTween = gsap.timeline({ paused: true })

@@ -13,18 +13,25 @@ section {
         height: 100vh;
         color: black;
 
+        .hero__title-slide-wrapper {
+            overflow: hidden;
+            position: relative;
+        }
+
         .hero__title {
             font-family: inherit;
             font-style: italic;
             font-size: 10vw;
             font-weight: 400;
+            padding: 2rem 4rem;
         }
 
         .hero__subtitle {
             width: 100%;
-            max-width: 50%;
+            max-width: 60%;
             margin-top: 10px;
             text-align: center;
+            margin: 0 auto; // to center
         }
 
         .hero__arrow {
