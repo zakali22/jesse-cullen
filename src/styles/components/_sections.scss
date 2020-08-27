@@ -37,9 +37,23 @@ section {
     }
 
     &.gallery {
+        margin-bottom: 50vh;
         .gallery__image-container, .gallery__text {
             width: 100%;
             max-width: 90%;
+        }
+
+        .gallery__text {
+            position: absolute;
+            top: 0;
+            left: -10%;
+            mix-blend-mode: difference;
+            box-shadow: 0 0 10px 0 rgba(53, 38, 38, 0.76);
+            padding: 1rem 2rem;
+            h2 {
+                color: lightslategrey;
+                font-size: 4vw;
+            }
         }
     }
 }

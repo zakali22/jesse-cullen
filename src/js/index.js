@@ -1,9 +1,11 @@
 import "../styles/index.scss"
+// import "./smoothScroll"; /* Debug later on or find an alternative (last course has smooth scrolling) */
+
 import {gsap, TweenMax, TimelineMax} from "gsap";
 import ScrollMagic from "scrollmagic";
 // import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
 // import 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators'; // For indicators on scrollmagic
-import { ScrollScene } from 'scrollscene'
+import { ScrollScene, addIndicators  } from 'scrollscene'
 
 const heroSection = document.querySelector('.hero')
 const heroSectionEls = heroSection.querySelectorAll('.hero__title, .hero__subtitle, .hero__arrow')
@@ -36,7 +38,7 @@ fadeTween
 //     .addTo(controller1)
 
 
-// scrollscene
+// Hero scrollscene
 const scene1 = new ScrollScene({
     triggerElement: mainSection,
     // forwardSpeed: 0.8,
@@ -46,3 +48,30 @@ const scene1 = new ScrollScene({
         timeline: fadeTween
     }
 })
+
+// Images scrollscene
+let controller1 = null;
+const gallery = document.querySelectorAll('.gallery')
+
+
+for(let i = 0; i < gallery.length; i++){
+    const scrollImageTween = gsap.timeline({paused: true})
+    scrollImageTween.fromTo(gallery[i].children[0].children[1], {y: 0}, {y: 300, ease: "linear.easeNone"})
+    
+    const scene2 = new ScrollScene({
+        triggerElement: gallery[i],
+        triggerHook: .7,
+        duration: gallery[i], // The height of the current gallery
+        reverse: true,
+        gsap: {
+            timeline:  scrollImageTween
+        }, 
+        useGlobalController: false
+    })
+
+    if(!controller1){
+        controller1 = scene2.Controller;
+    }
+
+    scene2.Scene.addIndicators({ name: `scene${i}`, colorEnd: '#2d2d2d' })
+}
