@@ -16,6 +16,10 @@ body {
     font-family: 'Mazius Review';
     color: #2d2d2d;
     position: relative;
+
+    // For smooth scrolling
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 h1, h2, h3, .h1, .h2, .h3 {
@@ -54,5 +58,42 @@ img {
 }
 
 main {
-    padding-top: 100vh;
+    // padding-top: 100vh;
+    position: relative;
+    top: 100vh;
 }
+
+
+
+// Animation
+@keyframes upDown {
+    0% {
+        transform: translateY(0)
+    }
+
+    100% {
+        transform: translateY(10%)
+    }
+}
+
+// For Smooth scrolling
+.viewport {
+    overflow: hidden;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  .scroll-container {  
+    position: absolute;  
+    overflow: hidden;
+    z-index: 10;
+    display: flex;
+    justify-content: center;  
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+  }
